@@ -11,14 +11,16 @@ themeRefs.addEventListener('change', setTheme);
 
 // функція для першочергового завантаження теми
 function checkColor() {
-  body.classList.add(localStorage.theme);
+  if (localStorage.theme) {
+    body.classList.add(localStorage.theme);
+  }
   themeRefs.checked = localStorage.theme === 'dark-theme';
 }
 
 // функція для зміни теми та запису в localStorage
 function setTheme(e) {
   body.classList.remove(localStorage.theme);
-  if (e.target.checked === true) {
+  if (e.target.checked) {
     localStorage.setItem('theme', Theme.DARK);
   } else {
     localStorage.setItem('theme', Theme.LIGHT);
